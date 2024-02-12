@@ -1,25 +1,5 @@
 ﻿namespace Task1
 {
-    public class Folder
-    {
-        public string Path { get; }
-        public DirectoryInfo directoryInfo { get; }
-
-        public Folder(string path)
-        {
-            Path = path;
-            directoryInfo = new DirectoryInfo(Path);
-        }
-        public void FolderClearTs()
-        {
-            if (!directoryInfo.Exists)
-            {
-                Console.WriteLine("Path does not exist");
-                return;
-            }
-
-        }
-    }
     internal class Program
     {
         static void Main(string[] args)
