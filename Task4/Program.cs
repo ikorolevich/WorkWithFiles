@@ -41,9 +41,9 @@
                 FileInfo NewFile = new FileInfo(fileGroupPath);
                 if (!NewFile.Exists)
                 {
-                    NewFile.Create().Close(); 
+                    NewFile.Create().Close();
                 }
-                
+
                 using (StreamWriter sw = NewFile.AppendText())
                 {
                     sw.Write(student.Name);

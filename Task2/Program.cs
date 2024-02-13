@@ -6,16 +6,12 @@
         {
             DirectoryInfo directory;
             List<string> ErrorLog = new List<string>(10);
-            //string folderPath = Console.ReadLine();
-            //string folderPath = "D:\\ZSLT - Cop";
             string folderPath;
 
             Console.WriteLine("Enter the path");
             do
             {
-                //folderPath = Console.ReadLine();
-                folderPath = "D:\\ZSLT - Copy";
-                folderPath = "D:\\STEAM";
+                folderPath = Console.ReadLine();
                 directory = new DirectoryInfo(folderPath);
                 if (!directory.Exists)
                 {
@@ -27,7 +23,7 @@
             long totSizeByte = getDirectorySize(directory);
             double totSizeMB = totSizeByte / 1000000;
             double totSizeGB = totSizeByte / 1000000000;
-            Console.WriteLine("Total size in bytes {0}, MB = {1}, Gb = {2}",totSizeByte, totSizeMB, totSizeGB);
+            Console.WriteLine("Total size in bytes {0}, MB = {1}, Gb = {2}", totSizeByte, totSizeMB, totSizeGB);
         }
 
         static long getDirectorySize(DirectoryInfo dir)
