@@ -15,7 +15,7 @@
             {
                 //folderPath = Console.ReadLine();
                 folderPath = "D:\\ZSLT - Copy";
-                folderPath = "D:\\Заявление";
+                folderPath = "D:\\STEAM";
                 directory = new DirectoryInfo(folderPath);
                 if (!directory.Exists)
                 {
@@ -24,7 +24,10 @@
                 else break;
             } while (true);
 
-            long totalSize = getDirectorySize(directory);
+            long totSizeByte = getDirectorySize(directory);
+            double totSizeMB = totSizeByte / 1000000;
+            double totSizeGB = totSizeByte / 1000000000;
+            Console.WriteLine("Total size in bytes {0}, MB = {1}, Gb = {2}",totSizeByte, totSizeMB, totSizeGB);
         }
 
         static long getDirectorySize(DirectoryInfo dir)
