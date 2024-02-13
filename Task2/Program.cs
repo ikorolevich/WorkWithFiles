@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace Task2
+﻿namespace Task2
 {
     internal class Program
     {
@@ -17,6 +15,7 @@ namespace Task2
             {
                 //folderPath = Console.ReadLine();
                 folderPath = "D:\\ZSLT - Copy";
+                folderPath = "D:\\Заявление";
                 directory = new DirectoryInfo(folderPath);
                 if (!directory.Exists)
                 {
@@ -25,47 +24,35 @@ namespace Task2
                 else break;
             } while (true);
 
-            DirectoryInfo[] dirs = directory.GetDirectories();
-            double size = 0;
-            foreach (var dir in dirs)
-            {
-                size += getDirs(dir);
-            }
-
-            try
-            {
-                foreach (DirectoryInfo dir in dirs)
-                {
-                   
-                }
-            }
-            catch (Exception e)
-            {
-                ErrorLog.Append(e.Message);
-            }
+            long totalSize = getDirectorySize(directory);
         }
 
-        static double getDirs(DirectoryInfo dir)
+        static long getDirectorySize(DirectoryInfo dir)
         {
-            double len = 0;
-
+            long len = 0;
             FileInfo[] files;
+
+
             DirectoryInfo[] dirs = dir.GetDirectories();
+
             if (dirs.Length == 0)
             {
                 files = dir.GetFiles();
-                
-                return files.Length;
+                foreach (FileInfo file in files)
+                {
+                    len += file.Length;
+                }
+
+                return len;
+            }
+            files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                len += file.Length;
             }
             foreach (var item in dirs)
             {
-                files = item.GetFiles();
-                len += files.Length;
-                //foreach (var file in files)
-                //{
-
-                //}
-                len = len + getDirs(item);
+                len += getDirectorySize(item);
             }
             return len;
         }
